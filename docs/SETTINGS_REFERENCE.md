@@ -51,8 +51,8 @@ Keys are listed in file order (alphabetical, as RR3 writes them). Multi-line str
 | `ENV_MAP_DYNAMIC_BLUR` | bool | `false` (22), `true` (19) |  |
 | `ENV_MAP_HDR` | bool | `false` (22), `true` (19) | HDR environment (reflection) maps. Part of HDR fix level C. |
 | `EXPECTED_RENDERER` | string | `GL_ES_2` (25), `GL_ES_3` (16) | OpenGL ES version the preset targets. |
-| `EXPECTED_SCREEN_HEIGHT` | integer | 8 different values, e.g. `1536`, `640`, `320` |  |
-| `EXPECTED_SCREEN_WIDTH` | integer | 9 different values, e.g. `2048`, `480`, `1920` |  |
+| `EXPECTED_SCREEN_HEIGHT` | integer | 8 different values, e.g. `1536`, `640`, `1080` |  |
+| `EXPECTED_SCREEN_WIDTH` | integer | 9 different values, e.g. `2048`, `1920`, `480` |  |
 | `EXTERIOR_SHADOWS_MENU` | bool | `true` (38), `false` (3) |  |
 | `EXTERIOR_SHADOWS_OPPONENT` | bool | `true` (29), `false` (12) |  |
 | `EXTERIOR_SHADOWS_PLAYER` | bool | `true` (37), `false` (4) |  |
@@ -77,12 +77,12 @@ Keys are listed in file order (alphabetical, as RR3 writes them). Multi-line str
 | `MENU_MAX_GARAGE_CARS_VISIBLE` | integer | `99` (27), `8` (14) |  |
 | `MIPMAP_BIAS` | real | `-2.0` (36), `0.0` (5) |  |
 | `MOBILE_INTERNET_4G_NAME_LIST` | string | `CTRadioAccessTechnologyeHRPD;CTRadioAccessTe…` (27), `*(empty)*` (7), `LTE` (6), `CTRadioAccessTechnologyeHRPD;CTRadioAccessTe…` (1) |  |
-| `Notes:` | string | 41 different values, e.g. `High-end Android devices`, `Low-end Android devices`, `Mid-range Android devices` |  |
+| `Notes:` | string | 41 different values, e.g. `18:9 screen resolution. Copy …`, `Apple TV`, `Apple TV 4th Gen` |  |
 | `OUTPUT_FOLDER` | string | `normal` (41) |  |
 | `PARTICLE_CAST_SHADOW` | bool | `false` (22), `true` (19) |  |
 | `PARTICLE_SCALE` | real | `1.0` (38), `0.5` (3) |  |
 | `PARTY_PLAY` | bool | `true` (29), `false` (12) |  |
-| `PARTY_PLAY_LOD_LIST` | string | `BCDEG` (26), `DEG` (10), `EG` (2), `CDEG` (2), `G` (1) |  |
+| `PARTY_PLAY_LOD_LIST` | string | `BCDEG` (26), `DEG` (10), `CDEG` (2), `EG` (2), `G` (1) |  |
 | `PARTY_PLAY_MAX_AI_OPP` | integer | `12` (18), `4` (13), `8` (10) |  |
 | `PARTY_PLAY_MAX_AI_OPP_NASCAR` | integer | `22` (18), `4` (13), `12` (10) |  |
 | `PARTY_PLAY_TRACK_EXTENSION` | string | `*(empty)*` (28), `_high` (11), `_mid` (2) |  |

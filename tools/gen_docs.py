@@ -78,6 +78,12 @@ def cell(text: str, limit: int = 60) -> str:
     return text if len(text) <= limit else text[: limit - 1] + "…"
 
 
+def ranked(counter):
+    """(value, count) pairs, most common first. Ties are broken by value, so the output never depends on
+    the order the files were read in (which differs between Windows and Linux)."""
+    return sorted(counter.items(), key=lambda vc: (-vc[1], vc[0]))
+
+
 def sort_key(name: str):
     """Android first, then Apple families, natural number order (iPad2,1 < iPad10,1)."""
     family = 0 if name.startswith("Android") else 1 if name == "SimRigTV" else 2
@@ -160,9 +166,9 @@ def settings_md(plists, feats) -> str:
     for k in order:
         vals = collections.Counter(dict((kk, v) for kk, _, v in e).get(k, "<missing>") for e in plists.values())
         if len(vals) > 5:
-            shown = f"{len(vals)} different values, e.g. " + ", ".join(f"`{cell(v, 30)}`" for v, _ in vals.most_common(3))
+            shown = f"{len(vals)} different values, e.g. " + ", ".join(f"`{cell(v, 30)}`" for v, _ in ranked(vals)[:3])
         else:
-            shown = ", ".join(f"`{cell(v, 45)}` ({c})" for v, c in vals.most_common())
+            shown = ", ".join(f"`{cell(v, 45)}` ({c})" for v, c in ranked(vals))
         lines.append(f"| `{k}` | {types[k]} | {shown} | {CONFIRMED.get(k, '')} |")
 
     forder = [k for k, _ in next(iter(feats.values()))]
@@ -193,14 +199,17 @@ def settings_md(plists, feats) -> str:
 
 
 def main() -> int:
-    plists = {p.stem: plist_entries(p) for p in EDS.glob("*.plist")}
-    feats = {p.stem: feats_entries(p) for p in FEATS.glob("*.feats")}
+    # Sorted by name (a case-sensitive string sort, so it's identical on every OS).
+    plists = {p.stem: plist_entries(p) for p in sorted(EDS.glob("*.plist"), key=lambda p: p.name)}
+    feats = {p.stem: feats_entries(p) for p in sorted(FEATS.glob("*.feats"), key=lambda p: p.name)}
     if not plists or not feats:
         print("profiles/decompiled is empty - run: python tools/rr3gfx.py decompile profiles/compiled -o profiles/decompiled")
         return 1
     DOCS.mkdir(exist_ok=True)
     for name, text in (("PRESETS.md", presets_md(plists, feats)), ("SETTINGS_REFERENCE.md", settings_md(plists, feats))):
-        (DOCS / name).write_text(text, encoding="utf-8", newline="\n")
+        # open(newline=...) instead of Path.write_text(newline=...), which only exists from Python 3.10.
+        with open(DOCS / name, "w", encoding="utf-8", newline="\n") as f:
+            f.write(text)
         print(f"wrote docs/{name}")
     return 0
 
