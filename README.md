@@ -3,7 +3,7 @@
 > **Preservation, inspection and modding tools for Real Racing 3 graphics profiles.**
 
 [![Python 3.8+](https://img.shields.io/badge/python-3.8%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![MIT licence](https://img.shields.io/badge/code%20licence-MIT- green?color=2ea44f)](LICENSE)
+[![MIT licence](https://img.shields.io/badge/code%20licence-MIT-2ea44f)](LICENSE)
 [![No dependencies](https://img.shields.io/badge/dependencies-none-2ea44f)](tools/rr3gfx.py)
 [![RR3 14.0.1](https://img.shields.io/badge/RR3-14.0.1-EA2026)](docs/PRESETS.md)
 [![Tests](https://github.com/Tankonline/RR3-Graphics-Profiles/actions/workflows/tests.yml/badge.svg)](https://github.com/Tankonline/RR3-Graphics-Profiles/actions/workflows/tests.yml)
