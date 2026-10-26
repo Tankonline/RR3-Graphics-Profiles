@@ -1,0 +1,8 @@
+# RR3 needs these bytes exactly. Never let git touch line endings.
+profiles/compiled/** binary
+profiles/decompiled/** -text
+*.bin binary
+
+# Everything else: normal text, LF in the repo.
+*.py text eol=lf
+*.md text eol=lf
