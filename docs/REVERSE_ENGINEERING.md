@@ -1,3 +1,5 @@
+[← Back to README](../README.md)
+
 # How the encryption was reverse engineered
 
 This is a record of how the keystream in `tools/rr3gfx.py` was recovered, so the work can be checked or repeated
